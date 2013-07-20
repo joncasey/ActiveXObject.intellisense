@@ -1,0 +1,20 @@
+i: {
+DriveLetter = I
+DriveType = 1
+FileSystem = FAT32
+RootFolder.SubFolders.Count = 6
+DriveLetter = 875770417
+VolumeName = HP v165w
+AvailableSpace = 12084002816
+FreeSpace = 12084002816
+TotalSize = 32298188800
+TotalSize - FreeSpace = 20214185984
+FreeSpace / TotalSize = 0.37413871380923996
+}
+I:\_\js\ActiveXObject\src\ActiveXObject.js
+Wed Oct 10 19:14:08 EDT 2012
+I:\_\js\ActiveXObject
+true
+Files.Count = 11
+Drives.Count = 6
+i:/_\ActiveXObject.js

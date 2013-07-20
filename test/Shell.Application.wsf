@@ -1,0 +1,29 @@
+<job>
+<script src="..\src\ActiveXObject.js" />
+<script src="..\src\Shell.Application.js" />
+<script>
+
+function each(o, f) {
+  if (undefined==o||o==null) return o
+  if (o.Count) { var c=new Enumerator(o); for (;!c.atEnd();c.moveNext()) f(c.item()) }
+  return o
+}
+
+var shell  = new ActiveXObject('Shell.Application')
+  , folder = shell.NameSpace(36)
+  , items  = folder.Items()
+  , a      = []
+
+//each(items, function(item) { a.push(item.Path) })
+
+var item = items.Item('notepad.exe')
+each(item.Verbs(), function(verb) { a.push(verb.Name) })
+
+
+a.push( shell.BrowseForFolder(0,'Sample',0).Title )
+
+WScript.Echo(a.join('\n'))
+
+// Explorer.Application http://msdn.microsoft.com/en-us/library/aa752084%28v=vs.85%29
+</script>
+</job>

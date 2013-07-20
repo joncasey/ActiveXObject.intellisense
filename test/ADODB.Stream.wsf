@@ -1,0 +1,16 @@
+<job>
+<script src="..\src\ActiveXObject.js" />
+<script src="..\src\ADODB.Stream.js" />
+<script>
+///<reference path="..\src\ActiveXObject.js">
+///<reference path="..\src\ADODB.Stream.js">
+
+var stream = new ActiveXObject('ADODB.Stream')
+
+stream.Open()
+stream.WriteText('success\n' + new Date)
+stream.SaveToFile('ADODB.Stream-test.txt', 2)
+stream.Close()
+
+</script>
+</job>

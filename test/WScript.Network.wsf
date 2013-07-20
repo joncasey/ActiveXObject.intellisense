@@ -1,0 +1,55 @@
+<job>
+<script src="..\src\ActiveXObject.js" />
+<script src="..\src\WScript.Network.js" />
+<script>
+
+var net      = new ActiveXObject('WScript.Network')
+  , domain   = net.UserDomain
+  , user     = net.UserName
+  , drives   = net.EnumNetworkDrives()
+  , printers = net.EnumPrinterConnections()
+
+function list(o) {
+  var a = []
+    , i = 0
+    , l = o.Count()
+  for (; i < l; i += 2) {
+    a.push(
+      o.Item(i) + ' ' +
+      o.Item(i + 1)
+    )
+  }
+  return a
+}
+
+WScript.Echo(
+  [].concat(
+    list(drives).sort()
+  , list(printers).sort()
+  ).join('\n')
+)
+
+// Samples                                                        //
+
+function AutomatedLogin() {
+  var user  = net.UserName
+    , start = new Date
+
+  while (user == '') {
+    var now = new Date
+    if (now - start > 30000) WScript.Quit()
+    WScript.Sleep(500)
+    user = net.UserName
+  }
+
+  if (/^l/i.test(user)) {
+    net.MapNetworkDrive('h:', '\\\\server1\\users\\' + user)
+    net.AddWindowsPrinterConnection('\\\\printer1\\hp', 'HP LaserJet 4')
+  } else {
+    net.MapNetworkDrive('h:', '\\\\server2\\users\\' + user)
+    net.AddWindowsPrinterConnection('\\\\printer2\\hp', 'HP LaserJet 4')
+  }
+}
+
+</script>
+</job>

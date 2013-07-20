@@ -1,0 +1,46 @@
+<job>
+<script src="..\src\ActiveXObject.js" />
+<script src="..\src\Scripting.FileSystemObject.js" />
+<script>
+///<reference path="..\src\ActiveXObject.js">
+///<reference path="..\src\Scripting.FileSystemObject.js">
+
+var io  = new ActiveXObject('Scripting.FileSystemObject')
+  , i   = io.GetDrive('i')
+  , js  = io.GetFile('../src/ActiveXObject.js')
+  , src = io.GetFolder('../src/')
+  , log = io.CreateTextFile('Scripting.FileSystemObject-test.log', true)
+
+//io.GetFolder(). // this fails in .wsf for vs2010, but not in .js
+//src. // works in .wsf for vs2010!
+
+log.Write([
+  'i: {'
+, 'DriveLetter = ' + i.DriveLetter
+, 'DriveType = ' + i.DriveType
+, 'FileSystem = ' + i.FileSystem
+, 'RootFolder.SubFolders.Count = ' + i.RootFolder.SubFolders.Count
+, 'DriveLetter = ' + i.SerialNumber
+, 'VolumeName = ' + i.VolumeName
+, 'AvailableSpace = ' + i.AvailableSpace
+, 'FreeSpace = ' + i.FreeSpace
+, 'TotalSize = ' + i.TotalSize
+, 'TotalSize - FreeSpace = ' + (i.TotalSize - i.FreeSpace)
+, 'FreeSpace / TotalSize = ' + (i.FreeSpace / i.TotalSize)
+, '}'
+
+, js
+, js.DateLastModified
+, js.ParentFolder.ParentFolder.Path
+, io.FileExists(js.Path)
+, 'Files.Count = ' + src.Files.Count
+, 'Drives.Count = ' + io.Drives.Count
+
+, io.BuildPath('i:/_', 'ActiveXObject.js')
+
+].join('\r\n'))
+
+log.Close()
+
+</script>
+</job>

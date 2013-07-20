@@ -1,0 +1,11 @@
+<job>
+<script>
+  ///<reference path="..\src\ActiveXObject.js"/>
+  ///<reference path="..\src\MSXML.js"/>
+
+  var xml = new ActiveXObject('Msxml2.FreeThreadedDOMDocument')
+
+  xml.save()
+
+</script>
+</job>
