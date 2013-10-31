@@ -11,7 +11,7 @@ ms.fs.write(
   , 'WScript.Network'
   , 'WScript.Shell'
   ].map(function(name) {
-    return ms.fs.read('src/'+ name +'.js')
+    return ms.fs.read('src/'+ name +'.js').replace(/^\/{3}.+\n/gm, '')
   })
 , 'ActiveXObject.js'
 )

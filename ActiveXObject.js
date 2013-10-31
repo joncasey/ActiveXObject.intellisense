@@ -9,7 +9,6 @@ var ActiveXObject = ActiveXObject || function (id) {
   ///</param>
   return new ActiveXObject[String(arguments[0]).toLowerCase()]
 }
-///<reference path="ActiveXObject.js">
 !function() { ActiveXObject['adodb.stream'] = c
 function c() {}
 c.prototype = {constructor:c // http://www.w3schools.com/ado/ado_ref_stream.asp
@@ -106,7 +105,6 @@ c.prototype = {constructor:c // http://www.w3schools.com/ado/ado_ref_stream.asp
                               //   adTypeText           2 Text data [Default]
 }
 }()
-///<reference path="ActiveXObject.js">
 !function() { ActiveXObject['scripting.filesystemobject'] = FileSystemObject
 
 function FileSystemObject() {
@@ -491,7 +489,6 @@ function Folders() {
 }
 
 }()
-///<reference path="ActiveXObject.js">
 !function() { ActiveXObject['shell.application'] = c
 function c() {}
 c.prototype = {constructor:c
@@ -834,7 +831,6 @@ Link.prototype = {constructor:Link
 , 'WorkingDirectory' : '' // Gets or sets the working directory specified in the link.
 }
 }()
-///<reference path="ActiveXObject.js">
 !function() { ActiveXObject['wscript.network'] = c
 function c() {}
 c.prototype = {constructor:c
@@ -908,7 +904,6 @@ Collection.prototype = {constructor:Collection
 }
 
 }()
-///<reference path="ActiveXObject.js">
 !function() { ActiveXObject['wscript.shell'] = c
 function c() {}
 c.prototype = {constructor:c
