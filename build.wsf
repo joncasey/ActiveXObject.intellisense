@@ -4,16 +4,16 @@
 
 ms.fs.write(
   [
-    'ActiveXObject'
-  , 'ADODB.Stream'
-  , 'Scripting.FileSystemObject'
-  , 'Shell.Application'
-  , 'WScript.Network'
-  , 'WScript.Shell'
+    'ActiveXObject',
+    'ADODB.Stream',
+    'Scripting.FileSystemObject',
+    'Shell.Application',
+    'WScript.Network',
+    'WScript.Shell'
   ].map(function(name) {
     return ms.fs.read('src/'+ name +'.js').replace(/^\/{3}.+\n/gm, '')
-  })
-, 'ActiveXObject.js'
+  }),
+  'ActiveXObject.js'
 )
 
 </script>
