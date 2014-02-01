@@ -60,6 +60,7 @@
     /// <field name="resolveExternals"   type="Boolean"        >Indicates whether external definitions (resolvable namespaces, DTD external subsets, and external entity references) are to be resolved at parse time, independent of validation. Read/write.</field>
     /// <field name="url"                type="String"         >Returns the URL for the last loaded XML document. Read-only.</field>
     /// <field name="validateOnParse"    type="Boolean"        >Indicates whether the parser should validate this document. Read/write.</field>
+    /// <field name="xml"                type="String"         >Contains the XML representation of the node and all its descendants. Read-only</field>
 
     /// <field name="namespaces" type="XMLSchemaCache"></field>
     /// <field name="schemas" type="XMLSchemaCache"></field>

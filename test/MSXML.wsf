@@ -9,7 +9,7 @@ var xml = new ActiveXObject('Msxml2.FreeThreadedDOMDocument')
 
 xml.loadXML('<test/>')
 
-WScript.Echo(xml.xml) // .xml is not showing up in intellisense.
+WScript.Echo(xml.xml)
 
 //xml.save('MSXML.xml')
 
