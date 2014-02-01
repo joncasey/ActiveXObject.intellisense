@@ -2,8 +2,8 @@
 <script src="..\src\ActiveXObject.js" />
 <script src="..\src\MSXML.js" />
 <script>
-///<reference path="..\src\ActiveXObject.js">
-///<reference path="..\src\MSXML.js">
+/// <reference path="..\src\ActiveXObject.js">
+/// <reference path="..\src\MSXML.js">
 
 var xml = new ActiveXObject('Msxml2.FreeThreadedDOMDocument')
 

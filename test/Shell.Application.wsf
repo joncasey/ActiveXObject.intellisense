@@ -2,6 +2,8 @@
 <script src="..\src\ActiveXObject.js" />
 <script src="..\src\Shell.Application.js" />
 <script>
+/// <reference path="..\src\ActiveXObject.js">
+/// <reference path="..\src\Shell.Application.js">
 
 function each(o, f) {
   if (undefined==o||o==null) return o
@@ -10,9 +12,9 @@ function each(o, f) {
 }
 
 var shell  = new ActiveXObject('Shell.Application')
-  , folder = shell.NameSpace(36)
-  , items  = folder.Items()
-  , a      = []
+var folder = shell.NameSpace(36)
+var items  = folder.Items()
+var a      = []
 
 //each(items, function(item) { a.push(item.Path) })
 

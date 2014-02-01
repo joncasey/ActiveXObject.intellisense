@@ -2,18 +2,18 @@
 <script src="..\src\ActiveXObject.js" />
 <script src="..\src\WScript.Network.js" />
 <script>
+/// <reference path="..\src\ActiveXObject.js">
+/// <reference path="..\src\WScript.Network.js">
 
 var net      = new ActiveXObject('WScript.Network')
-  , domain   = net.UserDomain
-  , user     = net.UserName
-  , drives   = net.EnumNetworkDrives()
-  , printers = net.EnumPrinterConnections()
+var domain   = net.UserDomain
+var user     = net.UserName
+var drives   = net.EnumNetworkDrives()
+var printers = net.EnumPrinterConnections()
 
 function list(o) {
   var a = []
-    , i = 0
-    , l = o.Count()
-  for (; i < l; i += 2) {
+  for (var i = 0, l = o.Count(); i < l; i += 2) {
     a.push(
       o.Item(i) + ' ' +
       o.Item(i + 1)
@@ -24,8 +24,8 @@ function list(o) {
 
 WScript.Echo(
   [].concat(
-    list(drives).sort()
-  , list(printers).sort()
+    list(drives).sort(),
+    list(printers).sort()
   ).join('\n')
 )
 
@@ -33,7 +33,7 @@ WScript.Echo(
 
 function AutomatedLogin() {
   var user  = net.UserName
-    , start = new Date
+  var start = new Date
 
   while (user == '') {
     var now = new Date

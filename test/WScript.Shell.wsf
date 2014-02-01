@@ -2,28 +2,31 @@
 <script src="..\src\ActiveXObject.js" />
 <script src="..\src\WScript.Shell.js" />
 <script>
+/// <reference path="..\src\ActiveXObject.js">
+/// <reference path="..\src\WScript.Shell.js">
 
 var shell    = new ActiveXObject('WScript.Shell')
-  , env      = shell.Environment('SYSTEM')
-  , allusers = shell.SpecialFolders('AllUsersDesktop')
-  , desktop  = shell.SpecialFolders('Desktop')
-  , link     = shell.CreateShortcut(desktop + '/test.lnk')
-  , url      = shell.CreateShortcut(desktop + '/test.url')
-  , text     = []
-//, exec     = shell.Exec('notepad.exe')
+var env      = shell.Environment('SYSTEM')
+var allusers = shell.SpecialFolders('AllUsersDesktop')
+var desktop  = shell.SpecialFolders('Desktop')
+var link     = shell.CreateShortcut(desktop + '/test.lnk')
+var url      = shell.CreateShortcut(desktop + '/test.url')
+var text     = []
+
+//var exec = shell.Exec('notepad.exe')
 //exec.StdOut.ReadAll()
 
 text.push(
-  allusers
-, 'OS = ' + env('OS')
-, '# of CPU = ' + env('NUMBER_OF_PROCESSORS')
+  allusers,
+  'OS = ' + env('OS'),
+  '# of CPU = ' + env('NUMBER_OF_PROCESSORS')
 )
 
 shell.Popup(
-  text.join('\n')
-, 0
-, 'Title'
-, 1 + 16
+  text.join('\n'),
+  0,
+  'Title',
+  1 + 16
 )
 
 function RegistryTest() {
@@ -31,8 +34,8 @@ function RegistryTest() {
   shell.RegWrite('HKCU\\Software\\ACME\\FortuneTeller\\MindReader', 'Goocher!', 'REG_SZ')
 
   var values = [
-      shell.RegRead('HKCU\\Software\\ACME\\FortuneTeller\\')
-    , shell.RegRead('HKCU\\Software\\ACME\\FortuneTeller\\MindReader')
+    shell.RegRead('HKCU\\Software\\ACME\\FortuneTeller\\'),
+    shell.RegRead('HKCU\\Software\\ACME\\FortuneTeller\\MindReader')
   ]
 
   shell.RegDelete('HKCU\\Software\\ACME\\FortuneTeller\\MindReader')
