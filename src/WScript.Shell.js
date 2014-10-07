@@ -158,7 +158,7 @@
       /// <summary>Runs a program in a new process.</summary>
       /// <param name="command" type="String">String value indicating the command line you want to run. You must include any parameters you want to pass to the executable file. &#10;
       /// "notepad "+ WScript.ScriptFullName, 1, true   &#10;
-      /// "cmd /K CD C:\ & Dir"                         &#10;
+      /// "cmd /K CD C:\ &amp; Dir"                     &#10;
       /// </param>
       /// <param name="windowStyle" type="Number" optional="true">Optional. Integer value indicating the appearance of the program's window. Note that not all programs make use of this information. &#10;
       /// 0  Hides the window and activates another window. &#10;
