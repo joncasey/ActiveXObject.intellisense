@@ -150,7 +150,7 @@
     this.abort = function() {
       ///
     }
-    this.getAllReponseHeaders = function() {
+    this.getAllResponseHeaders = function() {
       /// <returns type="String"/>
     }
     this.getResponseHeader = function(header) {
