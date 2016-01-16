@@ -1,6 +1,4 @@
 <job>
-<script src="..\src\ActiveXObject.js" />
-<script src="..\src\ADODB.Stream.js" />
 <script>
 /// <reference path="..\src\ActiveXObject.js">
 /// <reference path="..\src\ADODB.Stream.js">

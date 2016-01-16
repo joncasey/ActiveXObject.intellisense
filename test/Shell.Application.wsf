@@ -1,6 +1,4 @@
 <job>
-<script src="..\src\ActiveXObject.js" />
-<script src="..\src\Shell.Application.js" />
 <script>
 /// <reference path="..\src\ActiveXObject.js">
 /// <reference path="..\src\Shell.Application.js">
