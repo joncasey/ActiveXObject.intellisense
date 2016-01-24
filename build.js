@@ -13,11 +13,12 @@ var sourceFiles = [
 var fs = new ActiveXObject('Scripting.FileSystemObject')
 
 for (var i = 0; i < sourceFiles.length; i++) {
-  var textStream = fs.OpenTextFile('src/' + sourceFiles[i] + '.js')
-  var text = textStream.ReadAll()
-  textStream.Close()
-  sourceFiles[i] = text.replace(/^\/{3}.+\n/gm, '')
+  sourceFiles[i] = read('src/' + sourceFiles[i] + '.js').replace(/^\/{3}.+\n/gm, '')
 }
+
+sourceFiles.unshift(
+  read('doc/Copyright.txt').replace(/YYYY/, new Date().getFullYear())
+)
 
 with (fs.CreateTextFile(outputFile, true)) {
   Write(sourceFiles.join('\r\n'))
@@ -28,7 +29,12 @@ WScript.Echo('Saved "' + outputFile + '"')
 
 
 
-
+function read(file) {
+  var stream = fs.OpenTextFile(file)
+  var text = stream.ReadAll()
+  stream.Close()
+  return text
+}
 
 
 
