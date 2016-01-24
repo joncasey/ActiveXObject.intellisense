@@ -3,12 +3,13 @@
 /// <reference path="..\src\ActiveXObject.js">
 /// <reference path="..\src\ADODB.Stream.js">
 
-var stream = new ActiveXObject('ADODB.Stream')
+  var textStream = new ActiveXObject('ADODB.Stream')
 
-stream.Open()
-stream.WriteText('success\n' + new Date)
-stream.SaveToFile('ADODB.Stream-test.txt', 2)
-stream.Close()
+  textStream.CharSet = 'UTF-8'
+  textStream.Open()
+  textStream.WriteText('success\r\n' + new Date)
+  textStream.SaveToFile('ADODB.Stream-test.txt', 2)
+  textStream.Close()
 
 </script>
 </job>

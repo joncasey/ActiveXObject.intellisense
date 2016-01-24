@@ -3,26 +3,26 @@
 /// <reference path="..\src\ActiveXObject.js">
 /// <reference path="..\src\MSXML.js">
 
-var xml = new ActiveXObject('Msxml2.FreeThreadedDOMDocument')
+  var xml = new ActiveXObject('Msxml2.FreeThreadedDOMDocument')
 
-xml.loadXML('<test/>')
+  xml.loadXML('<test/>')
 
-WScript.Echo(xml.xml)
+  WScript.Echo(xml.xml)
 
-//xml.save('MSXML.xml')
+  //xml.save('MSXML.xml')
 
-//var xml3 = new ActiveXObject('msxml.domdocument.3.0')
-//var first = xml.firstChild
-//var next = first.firstChild.firstChild.lastChild.childNodes.nextNode()
+  //var xml3 = new ActiveXObject('msxml.domdocument.3.0')
+  //var first = xml.firstChild
+  //var next = first.firstChild.firstChild.lastChild.childNodes.nextNode()
 
-//var xhr = new ActiveXObject('microsoft.xmlhttp')
-//xhr.open('GET', 'http://myschemas.com', false)
+  //var xhr = new ActiveXObject('microsoft.xmlhttp')
+  //xhr.open('GET', 'http://myschemas.com', false)
 
-//var xsl = new ActiveXObject('Msxml2.XSLTemplate')
-//xsl.createProcessor().stylesheet.xml
+  //var xsl = new ActiveXObject('Msxml2.XSLTemplate')
+  //xsl.createProcessor().stylesheet.xml
 
-//var schema = new ActiveXObject('msxml.xmlschemacache')
-//schema.
+  //var schema = new ActiveXObject('msxml.xmlschemacache')
+  //schema.
 
 </script>
 <resource id="versions"> http://msdn.microsoft.com/en-us/library/hh542720.aspx

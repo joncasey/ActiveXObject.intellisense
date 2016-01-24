@@ -3,57 +3,49 @@
 /// <reference path="..\src\ActiveXObject.js">
 /// <reference path="..\src\WScript.Shell.js">
 
-var shell    = new ActiveXObject('WScript.Shell')
-var env      = shell.Environment('SYSTEM')
-var allusers = shell.SpecialFolders('AllUsersDesktop')
-var desktop  = shell.SpecialFolders('Desktop')
-var link     = shell.CreateShortcut(desktop + '/test.lnk')
-var url      = shell.CreateShortcut(desktop + '/test.url')
-var text     = []
+  var shell = new ActiveXObject('WScript.Shell')
+  var env = shell.Environment('SYSTEM')
+  var allusers = shell.SpecialFolders('AllUsersDesktop')
+  var desktop = shell.SpecialFolders('Desktop')
+  var link = shell.CreateShortcut(desktop + '/test.lnk')
+  var url = shell.CreateShortcut(desktop + '/test.url')
 
-//var exec = shell.Exec('notepad.exe')
-//exec.StdOut.ReadAll()
+  //var process = shell.Exec('notepad.exe')
+  //process.StdOut.ReadAll()
 
-text.push(
-  allusers,
-  'OS = ' + env('OS'),
-  '# of CPU = ' + env('NUMBER_OF_PROCESSORS')
-)
-
-shell.Popup(
-  text.join('\n'),
-  0,
-  'Title',
-  1 + 16
-)
-
-function RegistryTest() {
-  shell.RegWrite('HKCU\\Software\\ACME\\FortuneTeller\\', 1, 'REG_BINARY')
-  shell.RegWrite('HKCU\\Software\\ACME\\FortuneTeller\\MindReader', 'Goocher!', 'REG_SZ')
-
-  var values = [
-    shell.RegRead('HKCU\\Software\\ACME\\FortuneTeller\\'),
-    shell.RegRead('HKCU\\Software\\ACME\\FortuneTeller\\MindReader')
+  var array = [
+    allusers,
+    'OS = ' + env('OS'),
+    '# of CPU = ' + env('NUMBER_OF_PROCESSORS')
   ]
 
-  shell.RegDelete('HKCU\\Software\\ACME\\FortuneTeller\\MindReader')
-  shell.RegDelete('HKCU\\Software\\ACME\\FortuneTeller\\')
-  shell.RegDelete('HKCU\\Software\\ACME\\')
-  return values
-}
+  shell.Popup(array.join('\r\n'), 0, 'Title', 1 + 16)
 
-function SendKeysTest() {
-  shell.Run('calc')                ; sleep(100)
-  shell.AppActivate('Calculator')  ; sleep(100)
-  shell.SendKeys('1{+}')           ; sleep(500)
-  shell.SendKeys('2')              ; sleep(500)
-  shell.SendKeys('~')              ; sleep(500)
-  shell.SendKeys('*3')             ; sleep(500)
-  shell.SendKeys('~')              ; sleep(2500)
-  function sleep(n) {
-   WScript.Sleep(n)
+  function RegistryTest() {
+    shell.RegWrite('HKCU\\Software\\ACME\\FortuneTeller\\', 1, 'REG_BINARY')
+    shell.RegWrite('HKCU\\Software\\ACME\\FortuneTeller\\MindReader', 'Goocher!', 'REG_SZ')
+
+    var values = [
+      shell.RegRead('HKCU\\Software\\ACME\\FortuneTeller\\'),
+      shell.RegRead('HKCU\\Software\\ACME\\FortuneTeller\\MindReader')
+    ]
+
+    shell.RegDelete('HKCU\\Software\\ACME\\FortuneTeller\\MindReader')
+    shell.RegDelete('HKCU\\Software\\ACME\\FortuneTeller\\')
+    shell.RegDelete('HKCU\\Software\\ACME\\')
+    return values
   }
-}
+
+  function SendKeysTest() {
+    var sleep = function (n) { WScript.Sleep(n) }
+    shell.Run('calc')                ; sleep(100)
+    shell.AppActivate('Calculator')  ; sleep(100)
+    shell.SendKeys('1{+}')           ; sleep(500)
+    shell.SendKeys('2')              ; sleep(500)
+    shell.SendKeys('~')              ; sleep(500)
+    shell.SendKeys('*3')             ; sleep(500)
+    shell.SendKeys('~')              ; sleep(2500)
+  }
 
 </script>
 </job>

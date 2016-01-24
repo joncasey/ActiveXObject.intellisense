@@ -3,42 +3,37 @@
 /// <reference path="..\src\ActiveXObject.js">
 /// <reference path="..\src\Scripting.FileSystemObject.js">
 
-var io  = new ActiveXObject('Scripting.FileSystemObject')
-var i   = io.GetDrive('i')
-var js  = io.GetFile('../src/ActiveXObject.js')
-var src = io.GetFolder('../src/')
-var log = io.CreateTextFile('Scripting.FileSystemObject-test.log', true)
+  var fs = new ActiveXObject('Scripting.FileSystemObject')
+  var i = fs.GetDrive('i')
+  var jsFile = fs.GetFile('../src/ActiveXObject.js')
+  var srcFolder = fs.GetFolder('../src/')
 
-//io.GetFolder(). // this fails in .wsf for vs2010, but not in .js
-//src. // works in .wsf for vs2010!
+  var array = [
+    'i: {',
+    ' DriveLetter                 = ' + i.DriveLetter,
+    ' DriveType                   = ' + i.DriveType,
+    ' FileSystem                  = ' + i.FileSystem,
+    ' RootFolder.SubFolders.Count = ' + i.RootFolder.SubFolders.Count,
+    ' SerialNumber                = ' + i.SerialNumber,
+    ' VolumeName                  = ' + i.VolumeName,
+    ' AvailableSpace              = ' + i.AvailableSpace,
+    ' FreeSpace                   = ' + i.FreeSpace,
+    ' TotalSize                   = ' + i.TotalSize,
+    ' TotalSize - FreeSpace       = ' + (i.TotalSize - i.FreeSpace),
+    ' FreeSpace / TotalSize       = ' + (i.FreeSpace / i.TotalSize),
+    '}',
+    jsFile,
+    jsFile.DateLastModified,
+    jsFile.ParentFolder.ParentFolder.Path,
+    fs.FileExists(jsFile.Path),
+    'Files.Count = ' + srcFolder.Files.Count,
+    'Drives.Count = ' + fs.Drives.Count,
+    fs.BuildPath('i:/_', 'ActiveXObject.intellisense.js')
+  ]
 
-log.Write([
-  'i: {',
-  'DriveLetter = ' + i.DriveLetter,
-  'DriveType = ' + i.DriveType,
-  'FileSystem = ' + i.FileSystem,
-  'RootFolder.SubFolders.Count = ' + i.RootFolder.SubFolders.Count,
-  'DriveLetter = ' + i.SerialNumber,
-  'VolumeName = ' + i.VolumeName,
-  'AvailableSpace = ' + i.AvailableSpace,
-  'FreeSpace = ' + i.FreeSpace,
-  'TotalSize = ' + i.TotalSize,
-  'TotalSize - FreeSpace = ' + (i.TotalSize - i.FreeSpace),
-  'FreeSpace / TotalSize = ' + (i.FreeSpace / i.TotalSize),
-  '}',
-
-  js,
-  js.DateLastModified,
-  js.ParentFolder.ParentFolder.Path,
-  io.FileExists(js.Path),
-  'Files.Count = ' + src.Files.Count,
-  'Drives.Count = ' + io.Drives.Count,
-
-  io.BuildPath('i:/_', 'ActiveXObject.js')
-
-].join('\r\n'))
-
-log.Close()
+  var textStream = fs.CreateTextFile('Scripting.FileSystemObject-test.log', true)
+  textStream.Write(array.join('\r\n'))
+  textStream.Close()
 
 </script>
 </job>

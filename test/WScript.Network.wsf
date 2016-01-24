@@ -3,51 +3,51 @@
 /// <reference path="..\src\ActiveXObject.js">
 /// <reference path="..\src\WScript.Network.js">
 
-var net      = new ActiveXObject('WScript.Network')
-var domain   = net.UserDomain
-var user     = net.UserName
-var drives   = net.EnumNetworkDrives()
-var printers = net.EnumPrinterConnections()
+  var network = new ActiveXObject('WScript.Network')
+  var domain = network.UserDomain
+  var drives = network.EnumNetworkDrives()
+  var printers = network.EnumPrinterConnections()
 
-function list(o) {
-  var a = []
-  for (var i = 0, l = o.Count(); i < l; i += 2) {
-    a.push(
-      o.Item(i) + ' ' +
-      o.Item(i + 1)
-    )
-  }
-  return a
-}
+  WScript.Echo(
+    [].concat(
+      list(drives).sort(),
+      list(printers).sort()
+    ).join('\r\n')
+  )
 
-WScript.Echo(
-  [].concat(
-    list(drives).sort(),
-    list(printers).sort()
-  ).join('\n')
-)
-
-// Samples                                                        //
-
-function AutomatedLogin() {
-  var user  = net.UserName
-  var start = new Date
-
-  while (user == '') {
-    var now = new Date
-    if (now - start > 30000) WScript.Quit()
-    WScript.Sleep(500)
-    user = net.UserName
+  function list(o) {
+    var a = []
+    var i = 0
+    var l = o.Count()
+    for (; i < l; i += 2) {
+      a.push(
+        o.Item(i) + ' ' +
+        o.Item(i + 1)
+      )
+    }
+    return a
   }
 
-  if (/^l/i.test(user)) {
-    net.MapNetworkDrive('h:', '\\\\server1\\users\\' + user)
-    net.AddWindowsPrinterConnection('\\\\printer1\\hp', 'HP LaserJet 4')
-  } else {
-    net.MapNetworkDrive('h:', '\\\\server2\\users\\' + user)
-    net.AddWindowsPrinterConnection('\\\\printer2\\hp', 'HP LaserJet 4')
+  // Sample
+
+  function AutomatedLogin() {
+    var time = new Date()
+    var user = network.UserName
+    while (user == '') {
+      var now = new Date()
+      if (now - time > 30000) WScript.Quit()
+      WScript.Sleep(500)
+      user = network.UserName
+    }
+    if (/^l/i.test(user)) {
+      net.MapNetworkDrive('h:', '\\\\server1\\users\\' + user)
+      net.AddWindowsPrinterConnection('\\\\printer1\\hp', 'HP LaserJet 4')
+    }
+    else {
+      net.MapNetworkDrive('h:', '\\\\server2\\users\\' + user)
+      net.AddWindowsPrinterConnection('\\\\printer2\\hp', 'HP LaserJet 4')
+    }
   }
-}
 
 </script>
 </job>

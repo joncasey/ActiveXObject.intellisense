@@ -3,26 +3,30 @@
 /// <reference path="..\src\ActiveXObject.js">
 /// <reference path="..\src\Shell.Application.js">
 
-function each(o, f) {
-  if (undefined==o||o==null) return o
-  if (o.Count) { var c=new Enumerator(o); for (;!c.atEnd();c.moveNext()) f(c.item()) }
-  return o
-}
+  function each(o, f) {
+    if (null == o || o == undefined) return o
+    if (o.Count) for (var e = new Enumerator(o), i = 0; !e.atEnd(); e.moveNext()) f(e.item(), i++);
+    return o
+  }
 
-var shell  = new ActiveXObject('Shell.Application')
-var folder = shell.NameSpace(36)
-var items  = folder.Items()
-var a      = []
+  var shell = new ActiveXObject('Shell.Application')
+  var browsedFolder = shell.BrowseForFolder(0, 'Sample', 0)
+  var windowsFolder = shell.NameSpace(36)
+  var windowsFolderItems = windowsFolder.Items()
 
-//each(items, function(item) { a.push(item.Path) })
+  var array = [browsedFolder.Title]
 
-var item = items.Item('notepad.exe')
-each(item.Verbs(), function(verb) { a.push(verb.Name) })
+  //each(windowsFolderItems, function (item) {
+  //  array.push(item.Path)
+  //})
 
+  var windowsFolderItem = windowsFolderItems.Item('notepad.exe')
+  array.push('notepad.exe verbs')
+  each(windowsFolderItem.Verbs(), function (verb, i) {
+    array.push('verb(' + i + ') = "' + verb.Name + '"')
+  })
 
-a.push( shell.BrowseForFolder(0,'Sample',0).Title )
-
-WScript.Echo(a.join('\n'))
+  WScript.Echo(array.join('\r\n'))
 
 // Explorer.Application http://msdn.microsoft.com/en-us/library/aa752084%28v=vs.85%29
 </script>

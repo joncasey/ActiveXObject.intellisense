@@ -1,20 +1,20 @@
 i: {
-DriveLetter = I
-DriveType = 1
-FileSystem = FAT32
-RootFolder.SubFolders.Count = 9
-DriveLetter = -1643439210
-VolumeName = 
-AvailableSpace = 20079034368
-FreeSpace = 20079034368
-TotalSize = 30735204352
-TotalSize - FreeSpace = 10656169984
-FreeSpace / TotalSize = 0.6532910644758221
+ DriveLetter                 = I
+ DriveType                   = 1
+ FileSystem                  = FAT32
+ RootFolder.SubFolders.Count = 9
+ SerialNumber                = -1643439210
+ VolumeName                  = 
+ AvailableSpace              = 20079476736
+ FreeSpace                   = 20079476736
+ TotalSize                   = 30735204352
+ TotalSize - FreeSpace       = 10655727616
+ FreeSpace / TotalSize       = 0.6533054573523077
 }
 I:\_\js\ActiveXObject.intellisense\src\ActiveXObject.js
 Fri Jan 24 23:30:38 EST 2014
 I:\_\js\ActiveXObject.intellisense
 true
 Files.Count = 8
-Drives.Count = 5
-i:/_\ActiveXObject.js
+Drives.Count = 4
+i:/_\ActiveXObject.intellisense.js
