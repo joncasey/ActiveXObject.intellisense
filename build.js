@@ -1,5 +1,5 @@
 
-var outputFile = 'ActiveXObject.intellisense.js'
+var outputFile = 'dist/ActiveXObject.intellisense.js'
 var sourceFiles = [
   'ActiveXObject',
   'ADODB.Stream',
