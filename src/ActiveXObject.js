@@ -1,3 +1,10 @@
+
+/*
+ * ActiveXObject Intellisense file for Visual Studio
+ * Copyright Jon Casey <joncasey@gmail.com>
+ * Released under the MIT license
+ */
+
 var ActiveXObject = ActiveXObject || function (id) {
   /// <param name="id">
   /// ADODB.Stream                   &#10;

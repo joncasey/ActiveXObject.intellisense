@@ -1,10 +1,9 @@
 
 /*
- * TERMS OF USE
  * ActiveXObject Intellisense file for Visual Studio
- * Copyright 2014-2016 Jon Casey All rights reserved.
+ * Copyright Jon Casey <joncasey@gmail.com>
+ * Released under the MIT license
  */
-
 
 var ActiveXObject = ActiveXObject || function (id) {
   /// <param name="id">

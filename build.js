@@ -16,10 +16,6 @@ for (var i = 0; i < sourceFiles.length; i++) {
   sourceFiles[i] = read('src/' + sourceFiles[i] + '.js').replace(/^\/{3}.+\n/gm, '')
 }
 
-sourceFiles.unshift(
-  read('doc/Copyright.txt').replace(/YYYY/, new Date().getFullYear())
-)
-
 with (fs.CreateTextFile(outputFile, true)) {
   Write(sourceFiles.join('\r\n'))
   Close()
